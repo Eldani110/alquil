@@ -9,13 +9,23 @@ use Illuminate\Support\Facades\Auth;
 class ClienteController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $todo_los_clientes = Cliente::all();
+        $todo_los_clientes = Cliente::orderBy('id','desc')->paginate(7);
         
         return view('cliente.cliente', compact('todo_los_clientes'));
     }
