@@ -24,3 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/empresa', App\Http\Controllers\EmpresasController::class);
 
 Route::resource('/clientes', App\Http\Controllers\ClienteController::class);
+
+Route::get('/busquedacliente', [App\Http\Controllers\ClienteController::class, 'busqueda']);
+
+Route::get('clientes/{id}/delate', [App\Http\Controllers\ClienteController::class, 'delate']);
+
+Route::resource('/inventario', App\Http\Controllers\InventarioController::class);
+
+Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::class, 'busqueda']);

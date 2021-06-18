@@ -1,0 +1,13 @@
+@media (max-width: 576px) { 
+    .navbar-nav-m{
+        font-size: 20px;
+    }
+
+    .navbar-nav-m a {
+        font-size: 20px;
+    }
+
+    .card-body a{
+        font-size: 20px;
+    }
+ }

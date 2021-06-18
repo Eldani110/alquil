@@ -17,14 +17,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" media="screen and (max-device-width: 799px)" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('home') }}">
-                    <img src="{{ asset('img/logo.svg') }}" alt="Alquiler" srcset="" width="40%">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Alquiler" srcset="" width="150px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -32,12 +36,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav  mr-auto">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto navbar-nav ml-auto-m navbar-nav-m" >
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -52,105 +56,105 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li  class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Clientes
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
                                         Crear nuevo clientes
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
                                         Buscar y editar cliente
                                     </a>
 
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li  class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Inventario
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('inventario.create') }}">
                                         Agregar nuevo equipo
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('inventario.index') }}">
                                         Buscar y editar equipo
                                     </a>
 
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li  class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Entrega
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
                                         Nueva entrega
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
                                         Buscar y editar entrega
                                     </a>
 
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li  class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Devolución
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
                                         Nueva devolución
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
                                         Buscar y editar devolución
                                     </a>
 
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li  class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Gestión de obras
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
                                         Nueva obra
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
                                         Buscar y editar obra
                                     </a>
 
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li  class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Gestión de Facturación
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('clientes.create') }}">
                                         Ver facturación de clientes
                                     </a>
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li  class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
