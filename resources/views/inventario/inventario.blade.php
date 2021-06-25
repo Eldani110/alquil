@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-                <form action="/busquedainventario" method="get" class="d-flex  w-100">
+                <form  action="/busquedainventario" method="get" class="d-flex  w-100">
                     <input type="text" class="w-75 w-100" name="equipo" id="equipo" placeholder="Buscar equipo">
                     <button class="w-25 btn btn-dark"><i class="fas fa-search"></i></button>
                 </form>
@@ -22,7 +22,8 @@
                                 <th scope="col">Alquilados</th>
                                 <th scope="col">Disponible</th>
                                 <th scope="col"></th>
-                            </tr>
+                                <th scope="col"></th>
+                            </tr>   
                         </thead>
                     <tbody>
                         @foreach ($todo_los_inventarios as $todo_los_inventario)
@@ -30,11 +31,12 @@
                         <tr>
                             <th scope="row">{{ $todo_los_inventario->id_producto }}</th>
                                 <td>{{ $todo_los_inventario->nombre }}</td>
-                                <td>{{ $todo_los_inventario->valordiario }}</td>
+                                <td>${{ $todo_los_inventario->valordiario }}</td>
                                 <td>{{ $todo_los_inventario->existencia }}</td>
-                                <td>{{ $todo_los_inventario->alquilados }}</td>
+                                <td>@if (isset( $todo_los_inventario->alquilados) === false) 0 @else {{ $todo_los_inventario->alquilados }} @endif </td>
                                 <td>{{ $todo_los_inventario->disponible }}</td>
                                 <td><a href="inventario/{{$todo_los_inventario->id}}/edit" class="btn btn-primary">Ver</a></td>
+                                <td><a href="inventario/{{$todo_los_inventario->id}}/delate" class="btn btn-primary">Eliminar</a></td>
 
                         </tr>
                         @endforeach
@@ -48,6 +50,7 @@
         </div>
     </div>
 </div>
+
 
 
 @endsection

@@ -16,11 +16,13 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                            <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Identificación</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Telefono</th>
+                                <th scope="col">Valor diario</th>
+                                <th scope="col">Existencia</th>
+                                <th scope="col">Alquilados</th>
+                                <th scope="col">Disponible</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -30,11 +32,12 @@
                         <tr>
                             <th scope="row">{{ $todo_los_inventario->id_producto }}</th>
                                 <td>{{ $todo_los_inventario->nombre }}</td>
-                                <td>{{ $todo_los_inventario->valordiario }}</td>
+                                <td>${{ $todo_los_inventario->valordiario }}</td>
                                 <td>{{ $todo_los_inventario->existencia }}</td>
-                                <td>{{ $todo_los_inventario->alquilados }}</td>
+                                <td>@if (isset( $todo_los_inventario->alquilados) === false) 0 @else {{ $todo_los_inventario->alquilados }} @endif </td>
                                 <td>{{ $todo_los_inventario->disponible }}</td>
                                 <td><a href="inventario/{{$todo_los_inventario->id}}/edit" class="btn btn-primary">Ver</a></td>
+                                <td><a href="inventario/{{$todo_los_inventario->id}}/delate" class="btn btn-primary">Eliminar</a></td>
 
                         </tr>
                         @endforeach

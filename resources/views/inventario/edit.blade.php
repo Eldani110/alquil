@@ -7,24 +7,26 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h2 style="text-align: center;">Registrar equipo</h2>
-                    <form id="formulario" method="POST" action="{{ route('inventario.store') }}">
-                        @csrf                        
+                    <h2 style="text-align: center;">Editar inventario {{$inventario->nombre}}</h2>
+                    <form id="formulario" method="POST" action="/inventario/{{$inventario->id}}">
+                        @csrf
+                        @method('PUT')
+
                         <label for="password" >{{ __('Id') }}</label>
-                        <input id="id_producto" type="text" class="form-control" name="id_producto" value="@if (isset($ultimodato) === false) 1 @else {{$ultimodato->id_producto  + 1}} @endif"  required autofocus readonly> 
+                        <input id="id_producto" type="text" class="form-control"  value="{{$inventario->id_producto}}"  required autofocus readonly> 
 
 
                         <label for="password" >{{ __('Nombre') }}</label>
-                        <input id="name" type="text" class="form-control" name="name"   autocomplete="name" required autofocus >
+                        <input id="name" type="text" class="form-control" name="name"  required autocomplete="name" value="{{$inventario->nombre}}" autofocus >
                         
                         <label for="password" >{{ __('Valor diario') }}</label>
-                        <input id="valordiario" type="text" class="form-control" name="valordiario"  required autofocus>
+                        <input id="valordiario" type="text" class="form-control" name="valordiario" value="{{$inventario->valordiario}}"  required autofocus>
 
                         <label for="password" >{{ __('Existencia') }}</label>
-                        <input id="existencia" type="number" class="form-control" name="existencia" required  autofocus>
+                        <input id="existencia" type="number" class="form-control" name="existencia" value="{{$inventario->existencia}}"  required autofocus>
 
                         <button type="submit" class="btn btn-primary my-4 w-100">
-                                    {{ __('Registrar equipo') }}
+                                    {{ __('Editar cliente') }}
                         </button>
                    </form>
                 </div>
@@ -49,5 +51,4 @@
     this.submit();
     }
 </script>
-
 @endsection

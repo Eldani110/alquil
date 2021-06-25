@@ -66,13 +66,18 @@ class InventarioController extends Controller
 
         $inventario->id_producto = $request->id_producto;
         $inventario->nombre = $request->name;
-        $inventario->valordiario = $request->valordiario;
+        if (strpos($request->valordiario, ',') == 1 || strpos($request->valordiario, '.') == 1) {
+            $inventario->valordiario = str_replace(',','.',$request->valordiario);
+        }else {
+            $inventario->valordiario = number_format((int)$request->valordiario,0,'','.');
+        }
         $inventario->existencia = $request->existencia;
-
+        $inventario->disponible = $request->existencia;
         $inventario->id_negocio = Auth::user()->id_negocio;
 
         $inventario->save();
 
+        return redirect('/inventario');
 
 
 
@@ -95,9 +100,12 @@ class InventarioController extends Controller
      * @param  \App\Models\Inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventario $inventario)
+    public function edit($id)
     {
-        //
+        $inventario = Inventario::find($id);
+
+
+        return view('inventario.edit', compact('inventario'));
     }
 
     /**
@@ -107,9 +115,27 @@ class InventarioController extends Controller
      * @param  \App\Models\Inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, $id)
     {
-        //
+        $inventario = Inventario::find($id);
+        
+        $existencia = $inventario->existencia;
+        $disponible = $inventario->disponible;
+        $resta_de_existencia = $existencia - $request->existencia ;
+        $actualizar_disponible = $disponible - $resta_de_existencia;
+
+        $inventario->nombre = $request->name;
+        if (strpos($request->valordiario, ',') == 1 || strpos($request->valordiario, '.') == 1) {
+            $inventario->valordiario = str_replace(',','.',$request->valordiario);
+        }else {
+            $inventario->valordiario = number_format((int)$request->valordiario,0,'','.');
+        }
+        
+        $inventario->disponible = $actualizar_disponible;
+        $inventario->existencia = $request->existencia;
+
+        $inventario->save();
+        return redirect('/inventario/'.$id.'/edit');
     }
 
     /**
@@ -118,9 +144,18 @@ class InventarioController extends Controller
      * @param  \App\Models\Inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventario $inventario)
+    public function destroy($id)
     {
-        //
+        $inventario = Inventario::find($id);
+        
+        $inventario->delete();
+        return redirect('/inventario');
+    }
+
+    public function delate($id){
+        $inventario = Inventario::find($id);
+        
+        return view('inventario.delate', compact('id', 'inventario' ));
     }
 
     public function busqueda(Request $request){

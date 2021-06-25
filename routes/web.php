@@ -31,4 +31,6 @@ Route::get('clientes/{id}/delate', [App\Http\Controllers\ClienteController::clas
 
 Route::resource('/inventario', App\Http\Controllers\InventarioController::class);
 
+Route::get('inventario/{id}/delate', [App\Http\Controllers\InventarioController::class, 'delate']);
+
 Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::class, 'busqueda']);
