@@ -134,11 +134,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('obras.create') }}">
                                         Nueva obra
                                     </a>
 
-                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('obras.index') }}">
                                         Buscar y editar obra
                                     </a>
 

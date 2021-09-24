@@ -33,4 +33,8 @@ Route::resource('/inventario', App\Http\Controllers\InventarioController::class)
 
 Route::get('inventario/{id}/delate', [App\Http\Controllers\InventarioController::class, 'delate']);
 
-Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::class, 'busqueda']);
+Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::class, 'busqueda'])->name('busqueda');
+
+Route::resource('/obras', App\Http\Controllers\ObrasController::class);
+
+Route::get('/busquedaobras', [App\Http\Controllers\ObrasController::class, 'busqueda'])->name('busquedaobra');
