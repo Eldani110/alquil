@@ -32,15 +32,16 @@
                                 <td>{{ $toda_las_obra->nombre_de_la_obra }}</td>
                                 <td>{{ $toda_las_obra->dirección }}</td>
                                 <td>{{ $toda_las_obra->numero_de_contacto }}</td>
-                                <td>{{ $toda_las_obra->encargado }}</td>
+                                <td>{{ $toda_las_obra->nombre }}</td>
                                 <td><a href="obras/{{$toda_las_obra->id}}/edit" class="btn btn-primary">Ver</a></td>
                                 <td><a href="obras/{{$toda_las_obra->id}}/delate" class="btn btn-primary">Eliminar</a></td>
                         </tr>
                         @endforeach
                     </tbody>
-                            
+
                     </table>
-                    {{ $toda_las_obras->links() }}
+                    {{ $toda_las_obras->links("pagination::bootstrap-4") }}
+
                 </div>
                       
             </div>

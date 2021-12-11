@@ -38,3 +38,5 @@ Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::cl
 Route::resource('/obras', App\Http\Controllers\ObrasController::class);
 
 Route::get('/busquedaobras', [App\Http\Controllers\ObrasController::class, 'busqueda'])->name('busquedaobra');
+
+Route::get('/buscarclientesform', [App\Http\Controllers\ObrasController::class, 'getCliente']);

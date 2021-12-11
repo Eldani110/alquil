@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Obras;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Cliente;
+
 
 class ObrasController extends Controller
 {
@@ -26,8 +28,11 @@ class ObrasController extends Controller
     {
         $id_negocio = Auth::user()->id_negocio;
 
-        $toda_las_obras = Obras::where('id_negocio', $id_negocio)->orderBy('id','desc')->paginate(7);
-        
+        $toda_las_obras = Obras::where('obras.id_negocio', $id_negocio)
+        ->join('clientes', 'obras.encargado', '=', 'clientes.id')
+        ->select("*")
+        ->paginate(7);
+
         return view('obras.obras', compact('toda_las_obras'));
     }
 
@@ -64,7 +69,6 @@ class ObrasController extends Controller
         $obras->dirección = $request->direccion;
         $obras->numero_de_contacto = $request->numero_contacto;
         $obras->encargado = $request->encargado;
-
         $obras->id_negocio = Auth::user()->id_negocio;
         $obras->id_obra = $request->id_obra;
 
@@ -131,5 +135,16 @@ class ObrasController extends Controller
         ->paginate(4);
 
         return view('obras.obrasbusqueda', compact('toda_las_obras'));
+    }
+    
+    public function getCliente(Request $request)
+    {
+        $id_negocio = Auth::user()->id_negocio;
+
+
+        $data = Cliente::where('nombre', 'LIKE','%'.$request->keyword.'%')
+        ->where('id_negocio', $id_negocio)
+        ->get();
+        return response()->json($data); 
     }
 }

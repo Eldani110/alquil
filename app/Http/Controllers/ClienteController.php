@@ -135,6 +135,7 @@ class ClienteController extends Controller
 
 
     public function busqueda(Request $request){
+        
         $cliente = $request->get('cliente');
         $id_negocio = Auth::user()->id_negocio;
 
