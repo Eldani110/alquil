@@ -10,7 +10,9 @@ window.Vue = require('vue').default;
 import Vue from 'vue'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
+import VueCloneya from "vue-cloneya";
 
+Vue.use(VueCloneya);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -25,8 +27,11 @@ Vue.component('v-select', vSelect)
 
 Vue.component('buscarcliente-component', require('./components/ComponentBucarcliente.vue').default, );
 
+Vue.component('buscarobra-component', require('./components/ComponentBucarobra.vue').default, );
 
+Vue.component('equipo-component', require('./components/ComponentEquipo.vue').default, );
 
+Vue.component('buscarequipo-component', require('./components/ComponentBuscarequipo.vue').default, );
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

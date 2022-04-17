@@ -100,11 +100,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"  href="{{ route('clientes.create') }}">
+                                    <a class="dropdown-item"  href="{{ route('entrega.create') }}">
                                         Nueva entrega
                                     </a>
 
-                                    <a class="dropdown-item"  href="{{ route('clientes.index') }}">
+                                    <a class="dropdown-item"  href="{{ route('entrega.index') }}">
                                         Buscar y editar entrega
                                     </a>
 

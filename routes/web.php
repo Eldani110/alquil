@@ -37,6 +37,16 @@ Route::get('/busquedainventario', [App\Http\Controllers\InventarioController::cl
 
 Route::resource('/obras', App\Http\Controllers\ObrasController::class);
 
+Route::get('obras/{id}/delate', [App\Http\Controllers\ObrasController::class, 'delate']);
+
+
 Route::get('/busquedaobras', [App\Http\Controllers\ObrasController::class, 'busqueda'])->name('busquedaobra');
 
-Route::get('/buscarclientesform', [App\Http\Controllers\ObrasController::class, 'getCliente']);
+Route::get('/buscarclientesform', [App\Http\Controllers\ClienteController::class, 'getCliente']);
+
+Route::get('/buscarobraform', [App\Http\Controllers\ObrasController::class, 'getObra']);
+
+Route::get('/buscarequipoform', [App\Http\Controllers\InventarioController::class, 'getInventario']);
+
+
+Route::resource('/entrega', App\Http\Controllers\EntregaController::class);

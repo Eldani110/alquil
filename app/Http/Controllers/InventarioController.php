@@ -170,4 +170,15 @@ class InventarioController extends Controller
 
         return view('inventario.inventariobusqueda', compact('todo_los_inventarios'));
     }
+
+    public function getInventario(Request $request)
+    {
+        $id_negocio = Auth::user()->id_negocio;
+
+
+        $data = Inventario::where('nombre', 'LIKE','%'.$request->keyword.'%')
+        ->where('id_negocio', $id_negocio)
+        ->get();
+        return response()->json($data); 
+    }
 }

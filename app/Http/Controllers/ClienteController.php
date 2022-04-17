@@ -146,4 +146,15 @@ class ClienteController extends Controller
 
         return view('cliente.clientebusqueda', compact('clientes'));
     }
+
+    public function getCliente(Request $request)
+    {
+        $id_negocio = Auth::user()->id_negocio;
+
+
+        $data = Cliente::where('nombre', 'LIKE','%'.$request->keyword.'%')
+        ->where('id_negocio', $id_negocio)
+        ->get();
+        return response()->json($data); 
+    }
 }

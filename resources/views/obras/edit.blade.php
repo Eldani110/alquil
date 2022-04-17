@@ -39,20 +39,5 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("formulario").addEventListener('submit', validarFormulario); 
-    });
 
-    function validarFormulario(evento) {
-    evento.preventDefault();
-    var valordiario = document.getElementById('valordiario').value;
-    if(valordiario.length < 3) {
-        alert('No puedes poner un valor inferior a 100 pesos colombianos');
-        return;
-    }
-
-    this.submit();
-    }
-</script>
 @endsection

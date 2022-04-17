@@ -25,8 +25,8 @@
     <div class="card">
       <div class="card-body d-flex flex-column">
         <h2 class="card-title">Entrega</h2>
-        <a href="http://" class="btn btn-primary my-1 " ><i class="fas fa-plus-circle mx-1"></i>Nueva entrega</a>
-        <a href="http://" class="btn btn-primary my-1 " ><i class="fas fa-pen mx-1"></i>Buscar y editar entrega</a>
+        <a href="{{ route('entrega.create') }}" class="btn btn-primary my-1 " ><i class="fas fa-plus-circle mx-1"></i>Nueva entrega</a>
+        <a href="{{ route('entrega.index') }}" class="btn btn-primary my-1 " ><i class="fas fa-pen mx-1"></i>Buscar y editar entrega</a>
       </div>
     </div>
   </div>

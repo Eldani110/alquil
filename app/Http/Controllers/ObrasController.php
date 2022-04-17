@@ -108,9 +108,17 @@ class ObrasController extends Controller
      * @param  \App\Models\Obras  $obras
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Obras $obras)
+    public function update(Request $request, Obras $obras, $id)
     {
-        //
+        $obras = Obras::find($id);
+
+        $obras->nombre_de_la_obra = $request->name;
+        $obras->dirección = $request->direccion;
+        $obras->numero_de_contacto = $request->numero_contacto;
+        $obras->encargado = $request->encargado;
+       
+        $obras->save();
+        return redirect('/obras');
     }
 
     /**
@@ -119,9 +127,18 @@ class ObrasController extends Controller
      * @param  \App\Models\Obras  $obras
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Obras $obras)
+    public function destroy($id)
     {
-        //
+        $obra = Obras::find($id);
+        
+        $obra->delete();
+        return redirect('/obras');
+    }
+
+    public function delate($id){
+        $obra = Obras::find($id);
+        
+        return view('obras.delate', compact('id', 'obra' ));
     }
 
     public function busqueda(Request $request){
@@ -137,12 +154,12 @@ class ObrasController extends Controller
         return view('obras.obrasbusqueda', compact('toda_las_obras'));
     }
     
-    public function getCliente(Request $request)
+    public function getObra(Request $request)
     {
         $id_negocio = Auth::user()->id_negocio;
 
 
-        $data = Cliente::where('nombre', 'LIKE','%'.$request->keyword.'%')
+        $data = Obras::where('nombre_de_la_obra', 'LIKE','%'.$request->keyword.'%')
         ->where('id_negocio', $id_negocio)
         ->get();
         return response()->json($data); 
