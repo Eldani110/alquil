@@ -27,6 +27,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "ansi-html": "0.0.9",
+        "async": "^3.2.3",
         "font-awesome": "^4.7.0",
         "vue-cloneya": "^1.0.14",
         "vue-select": "^3.15.1"
